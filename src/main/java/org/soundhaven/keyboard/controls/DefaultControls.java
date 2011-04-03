@@ -12,7 +12,7 @@ import javax.sound.midi.Sequencer;
 import javax.sound.midi.Synthesizer;
 
 import org.soundhaven.keyboard.constants.Constants;
-public class DefaultControls{
+public class DefaultControls implements Controls{
     Synthesizer synth;
     Instrument[] instrument;
     MidiChannel[] channels;
@@ -40,6 +40,7 @@ public class DefaultControls{
         this.sequence = new Sequence(Sequence.PPQ, 10);
     }
     
+    @Override
     public void closeSynth(){
         if(synth!=null)
             synth.close();
@@ -52,7 +53,8 @@ public class DefaultControls{
          channels=null; 
     }
     
-    public void decrementInsternment(){
+    @Override
+    public void decrementInstrument(){
         if(selected_instrument>low)
             --selected_instrument;
         
@@ -60,15 +62,18 @@ public class DefaultControls{
         channels[0].programChange(patch.getBank(),patch.getProgram()); 
     }
     
+    @Override
     public String getInstrumentName(){
         return instrument[selected_instrument].getName();
     }
     
+    @Override
     public Instrument[] getInstruments(){
         return instrument;
     }
     
-    public void incrementInsternment(){
+    @Override
+    public void incrementInstrument(){
         if(selected_instrument<high)
             ++selected_instrument;
         
@@ -76,23 +81,28 @@ public class DefaultControls{
         channels[0].programChange(patch.getBank(),patch.getProgram()); 
     }
 
+    @Override
     public void setInstrument(int instrument_index){
     	patch=instrument[instrument_index].getPatch();
         channels[0].programChange(patch.getBank(),patch.getProgram()); 
     }
     
+    @Override
     public void setModulation(int modulation){
         channels[0].controlChange(Constants.MODULATION,modulation);
     }
     
+    @Override
     public void setPan(int pan){
         channels[0].controlChange(Constants.PAN,pan);
     }
 
+    @Override
     public void setPitchBend(int pitchbend){
         if(pitchbend>0) channels[0].setPitchBend(pitchbend);
     }
     
+    @Override
     public void setRange(int low, int high){
         this.low=low;
         this.high=high;
@@ -101,22 +111,27 @@ public class DefaultControls{
         channels[0].programChange(patch.getBank(),patch.getProgram()); 
     }
     
+    @Override
     public void setReverb(int reverb){
         channels[0].controlChange(Constants.REVERB,reverb);
     }
 
+    @Override
     public void setSustain(int sustain){
         channels[0].controlChange(Constants.SUSTAIN,sustain);
     }
     
+    @Override
     public void setVolume(int volume){
         channels[0].controlChange(Constants.VOLUME,volume);
     }
     
+    @Override
     public void startNote(int note){
         channels[0].noteOn(note,127);
     }
     
+    @Override
     public void stopNote(int note){
         channels[0].noteOff(note);
     }
