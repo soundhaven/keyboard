@@ -21,7 +21,7 @@ public class Constants{
     public static int MODULATION_COORDINATES=100;
     
     //main gui
-    public static String GUI_NAME="Virtual Keyboard";
+    public static String GUI_NAME="Virtual Keyboard - soundhaven.org";
     public static int GUI_SIZE_X=968;
     public static int GUI_SIZE_Y=360;
     
