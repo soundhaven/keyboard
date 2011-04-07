@@ -4,12 +4,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
 import org.soundhaven.keyboard.constants.Constants;
-import org.soundhaven.keyboard.gui.KeyboardGUI;
+import org.soundhaven.keyboard.controls.KeyboardContext;
 
 public class ControlsMouseMotionListener implements MouseMotionListener{
-	KeyboardGUI keyboardGUI;
+	KeyboardContext keyboardGUI;
 	
-	public ControlsMouseMotionListener(KeyboardGUI keyboardGUI){
+	public ControlsMouseMotionListener(KeyboardContext keyboardGUI){
 		this.keyboardGUI=keyboardGUI;
 	}
 	

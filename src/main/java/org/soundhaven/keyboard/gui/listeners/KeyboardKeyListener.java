@@ -2,11 +2,12 @@ package org.soundhaven.keyboard.gui.listeners;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import org.soundhaven.keyboard.gui.KeyboardGUI;
+
+import org.soundhaven.keyboard.controls.KeyboardContext;
 public class KeyboardKeyListener implements KeyListener{
-	KeyboardGUI keyboardGUI;
+	KeyboardContext keyboardGUI;
 	
-	public KeyboardKeyListener(KeyboardGUI keyboardGUI){
+	public KeyboardKeyListener(KeyboardContext keyboardGUI){
 		this.keyboardGUI=keyboardGUI;
 	}
 	
@@ -237,7 +238,7 @@ public class KeyboardKeyListener implements KeyListener{
                 keyboardGUI.getNotes().put(']',88+(keyboardGUI.getOctaveShift()*12));
                 keyboardGUI.getPressed().add(ke.getKeyChar());
             }
-            keyboardGUI.repaint();
+            keyboardGUI.getKeyboard().repaint();
         }
     }
 
